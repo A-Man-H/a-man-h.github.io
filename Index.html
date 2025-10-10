@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aymane Hasnaoui - Data Analyst Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text h2 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            padding: 1rem 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Profile Section */
+        .profile-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .timeline-desc {
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-contributions {
+            margin-top: 1rem;
+        }
+        
+        .timeline-contributions h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .timeline-contributions ul {
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-contributions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-item {
+            background-color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-year {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--light-color);
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        /* Education Section */
+        .education-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-period {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .education-details {
+            margin-top: 0.5rem;
+        }
+        
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .cert-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .cert-year {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            color: var(--light-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="profile-img">AH</div>
+            <div class="header-text">
+                <h1>Aymane Hasnaoui</h1>
+                <h2>Data Analyst & BI Developer</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>+212708018051</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>aymane.hasnaoui1@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profile</h2>
+            </div>
+            <div class="profile-content">
+                <p>Data Engineer and BI Developer, passionate about new technologies and innovation in the IT field. I have worked to help clients understand and find the most suitable solutions to their needs.</p>
+                <p>I am mainly involved in data analysis and business intelligence, while also developing my data engineering skills to gain as much expertise as possible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">06/09/2021 - 11/10/2021</div>
+                        <h3 class="timeline-title">Internship at Spark-Remote Foundation</h3>
+                        <p class="timeline-desc">Data Science & Business Analytics Tasks</p>
+                        <div class="timeline-contributions">
+                            <h4>Key Contributions:</h4>
+                            <ul>
+                                <li>Prediction with Supervised and Unsupervised Learning</li>
+                                <li>Decision Tree Algorithms</li>
+                                <li>Exploratory Data Analysis of sales and purchase issues</li>
+                            </ul>
+                            <p><strong>Technologies:</strong> Python, Power BI</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">15/02/2022 - 01/08/2022</div>
+                        <h3 class="timeline-title">Data Engineer & Data Analyst - Food Industry</h3>
+                        <div class="timeline-contributions">
+                            <h4>Key Contributions:</h4>
+                            <ul>
+                                <li>Extraction, transformation (SQL), and loading of data into Power BI</li>
+                                <li>Design of data models and DAX measures for dynamic reports</li>
+                                <li>Design and implementation of CI/CD pipelines to automate the deployment of SQL components on Databricks</li>
+                                <li>Collaboration with teams to ensure reliable and automated deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">10/08/2022 - 10/08/2025</div>
+                        <h3 class="timeline-title">Data Analyst - Cosmetics Industry</h3>
+                        <p class="timeline-desc">An integrated Power BI web application providing financial insights to optimize profitability, with features such as price optimization, product management, margin analysis, and benchmarking.</p>
+                        <p><strong>Users:</strong> 2000+ users across various functions and countries</p>
+                        <p><strong>Features:</strong> Sales analysis, margin protection, and growth recommendations</p>
+                        <p><strong>Impact:</strong> Rapid growth with 13,000 monthly views</p>
+                        <div class="timeline-contributions">
+                            <h4>Key Contributions:</h4>
+                            <ul>
+                                <li>Implemented data security in Power BI with RLS (Row-Level Security) and access management</li>
+                                <li>Designed interactive dashboards and custom visuals based on business needs and key KPIs</li>
+                                <li>Optimized report and data model performance, including improving queries and refactoring complex DAX formulas</li>
+                                <li>Collaborated with stakeholders to gather requirements and ensure report quality</li>
+                                <li>Managed data refresh and monitored report performance to ensure efficiency and speed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">C</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">C#</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Django</span>
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                        <span class="skill-item">Bootstrap</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Database</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">MySQL</span>
+                        <span class="skill-item">MongoDB</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Office Software</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Excel</span>
+                        <span class="skill-item">Power BI</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Linear Regression</span>
+                        <span class="skill-item">KNN</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Big Data</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Apache Spark</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Cloud</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Azure</span>
+                        <span class="skill-item">ADF</span>
+                        <span class="skill-item">Synapse Analytics</span>
+                        <span class="skill-item">SQL Database</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-year">2021</div>
+                        <h3 class="project-title">Desktop Application: Article Search Engine</h3>
+                        <p>Article Search Engine Across Various Platforms (Scientific, Technological) to Analyze Publication Rate.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-year">2021</div>
+                        <h3 class="project-title">Web Application: Attendance Management</h3>
+                        <p>School Platform for Teachers, Students, and Administrators that Manages Student Absences.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Spring</span>
+                            <span class="tech-tag">JEE</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-year">2020</div>
+                        <h3 class="project-title">Bank Desktop Application</h3>
+                        <p>Perform Bank Transactions and Request Loans.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaFX</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-content">
+                        <div class="project-year">2020</div>
+                        <h3 class="project-title">Web Application: E-Commerce Website</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-item">
+                <div class="education-period">2017 - 2022</div>
+                <h3 class="education-title">State Engineer - Computer Science</h3>
+                <p>National School of Applied Sciences of Al Hocelma</p>
+                <div class="education-details">
+                    <p><strong>Specialization:</strong> Business Intelligence</p>
+                </div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-period">2016 - 2017</div>
+                <h3 class="education-title">Scientific Baccalaureate</h3>
+                <p>Ibn Yassamine | TAZA</p>
+                <div class="education-details">
+                    <p><strong>Specialization:</strong> Physics</p>
+                    <p><strong>Honors:</strong> Good</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications</h2>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-year">2024</div>
+                    <h3 class="cert-title">Microsoft Certified: Fabric Analytics Engineer Associate</h3>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-year">2024</div>
+                    <h3 class="cert-title">Microsoft Certified: Power BI Data Analyst Associate</h3>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-year">2024</div>
+                    <h3 class="cert-title">Microsoft Certified: Azure Enterprise Data Analyst Associate</h3>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-year">2023</div>
+                    <h3 class="cert-title">Microsoft Certified: Azure Data Engineer Associate</h3>
+                </div>
+                
+                <div class="cert-card">
+                    <div class="cert-year">2022</div>
+                    <h3 class="cert-title">Microsoft Certified: Power Platform Fundamentals</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Aymane Hasnaoui</h3>
+            <p>Data Analyst & BI Developer</p>
+            <div class="social-links">
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">GitHub</a>
+                <a href="#" class="social-link">Email</a>
+            </div>
+            <p>&copy; 2024 Aymane Hasnaoui. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
